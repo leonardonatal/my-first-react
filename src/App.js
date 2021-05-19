@@ -1,16 +1,26 @@
-//functions that returns jsx
-// starting with capital letter from another component
-// props object used to pass data from another component
-import Todo from './components/Todo';
+import { Route, Switch } from 'react-router-dom';
 
+import AllMeetupsPage from './pages/AllMeetups';
+import NewMeetupPage from './pages/NewMeetpup';
+import FavoritesPage from './pages/Favorites';
+import Layout from './components/layout/Layout';
 
 function App() {
   return (
     <div>
-      <h1>My Todos</h1>
-      <Todo text='learn React'/>
-      <Todo text='master React'/>
-      <Todo text='explore React'/>
+      <Layout>
+        <Switch>
+          <Route path='/' exact>
+            <AllMeetupsPage />
+          </Route>
+          <Route path='/new-meetup'>
+            <NewMeetupPage />
+          </Route>
+          <Route path='/favorites'>
+            <FavoritesPage />
+          </Route>
+        </Switch>
+      </Layout>
     </div>
   );
 }
